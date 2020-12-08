@@ -61,6 +61,7 @@
 ;;Load theme
 (load-theme 'misterioso)
 
+;;Set shortcut for switching buffer
 (global-set-key (kbd "C-M-j") 'counsel-switch-buffer)
 
 ;;ensure that all needed packages are installed
