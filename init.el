@@ -35,7 +35,7 @@
    '("57e3f215bef8784157991c4957965aa31bac935aca011b29d7d8e113a652b693" default))
  '(fci-rule-color "#14151E")
  '(package-selected-packages
-   '(doom-themes helpful counsel ivy-rich which-key doom-modeline swiper diminish ivy use-package platformio-mode afternoon-theme frame-tabs auctex))
+   '(xah-fly-keys doom-themes helpful counsel ivy-rich which-key doom-modeline swiper diminish ivy use-package platformio-mode afternoon-theme frame-tabs auctex))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    '((20 . "#d54e53")
@@ -61,8 +61,15 @@
 ;;Load theme
 (load-theme 'misterioso)
 
-;;Set shortcut for switching buffer
-(global-set-key (kbd "C-M-j") 'counsel-switch-buffer)
+;; Disable UI elements
+(menu-bar-mode 0)
+(scroll-bar-mode 0)
+(tool-bar-mode 0)
+
+;; Set keybindings
+(use-package general) 
+(general-define-key
+ "C-M-j" 'counsel-switch-buffer)
 
 ;;ensure that all needed packages are installed
 (setq use-package-always-ensure t)
@@ -74,7 +81,7 @@
 
 ;;enable use-package
 (require 'use-package)
-
+ 
 ;;Disable splash screen and banner
 (setq inhibit-startup-message t
       inhibit-startup-echo-area-message t) 
@@ -86,7 +93,7 @@
 (sublimity-mode 1)
 
 ;;disable line numbering in eshell and org mode
-(add-hook 'eshell-mode-hook (lambda () (display-line-numbers-mode 0)))
+(add-hook 'eshell-mode-hook (lambda () (display-line-numbers-mode 0))) 
 (add-hook 'org-mode-hook (lambda () (display-line-numbers-mode 0)))
 
 ;;Enable IDO
@@ -167,6 +174,12 @@
 
 ;;enable all-the-icons
 (use-package all-the-icons)
+
+(require 'xah-fly-keys)
+
+(xah-fly-keys-set-layout 'koy)
+
+(xah-fly-keys 1)
 
 ;;define default directory
 (setq default-directory "~/Documents/4ahme/")
