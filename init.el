@@ -50,7 +50,7 @@
 (general-define-key
  "C-M-j" 'counsel-switch-buffer)
 
-;;; Lispy - for better elisp editing
+;;; Lispy - For better elisp editing
 (use-package lispy
   :hook (emacs-lisp-mode . lispy-mode))
 
