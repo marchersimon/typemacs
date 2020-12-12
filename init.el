@@ -1,10 +1,17 @@
+;; Set garbage collecter threshold from 800kB to 25MB for faster startup
+(setq gc-cons-threshold (* 25 1000 1000))
+
+;; Store amount of times gc was triggered
+;; (setq gc-triggered 0)
+;; (add-hook 'post-gc-hook (lambda () (setq gc-triggered (+ gc-triggered 1))))
+
 ;; Set up packages
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (package-initialize)
-(package-refresh-contents)
 (unless (package-installed-p 'use-package)
+  (package-refresh-contents)
   (package-install 'use-package))
 (require 'use-package)
 (setq use-package-always-ensure t)
@@ -34,19 +41,23 @@
 (show-paren-mode t)
 
 ;; Packages
+;;; Esup - measure startup time
+;; (use-package esup
+;;   :config (setq esup-depth 0))
+
 ;;; General - More powerful keybinding functions
 (use-package general) 
 (general-define-key
  "C-M-j" 'counsel-switch-buffer)
 
 ;;; Lispy - for better elisp editing
-(use-package lispy)
-(add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode t))) 
+(use-package lispy
+  :hook (emacs-lisp-mode . lispy-mode))
 
 ;;; Sublimity - Smoother scrolling
-(use-package sublimity)
+(use-package sublimity
+  :config (sublimity-mode 1))
 (require 'sublimity-scroll)
-(sublimity-mode t)
 
 ;;; Ivy - A generic completion mechanism
 (use-package ivy
@@ -90,13 +101,17 @@
 (use-package doom-modeline
   :init (doom-modeline-mode 1))
 (use-package all-the-icons)
+
+;; Set gc-threshhold back to 800kB, to that gc pauses don't take too long
+(setq gc-cons-threshold 800000)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(doom-modeline helpful which-key ivy-rich sublimity lispy general xah-fly-keys use-package)))
+   '(esup doom-modeline helpful which-key ivy-rich sublimity lispy general xah-fly-keys use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
