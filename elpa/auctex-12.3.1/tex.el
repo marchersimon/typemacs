@@ -5914,6 +5914,25 @@ sign.  With optional ARG, insert that many dollar signs."
 	    (message "Matches %s"
 		     (buffer-substring
 		      (point) (progn (end-of-line) (point))))))))
+     ((and (stringp (car texmathp-why))
+	   (string-equal (substring (car texmathp-why) 0 2) "\\("))
+      ;; \( ... \) -> \[ ... \]
+      (save-excursion
+	(search-forward "\\)")
+	(delete-backward-char 2)
+	(insert "\\\]")
+	(search-backward "\\(")
+	(delete-char 2)
+	(insert "\\\[")
+	))
+     ((and (stringp (car texmathp-why))
+	   (string-equal (substring (car texmathp-why) 0 2) "\\["))
+      ;; delete \[ ... \]
+      (save-excursion
+	(search-forward "\\]")
+	(delete-backward-char 2)
+	(search-backward "\\[")
+	(delete-char 2)))
      (t
       ;; Math mode was not entered with dollar - we cannot finish it with one.
       (message "Math mode started with `%s' cannot be closed with dollar"
