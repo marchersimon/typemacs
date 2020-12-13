@@ -1,3 +1,7 @@
+;; Load auctex
+(use-package tex
+  :ensure auctex)
+
 ;; Prompt for macro name when typing "\"
 (setq TeX-electric-escape t)
 

@@ -102,7 +102,7 @@
   :init (doom-modeline-mode 1))
 (use-package all-the-icons)
 
-;; Set gc-threshhold back to 800kB, to that gc pauses don't take too long
+;; Set garbage collection threshhold back to 800kB, to that gc pauses don't take too long
 (setq gc-cons-threshold 800000)
 
 (custom-set-variables
