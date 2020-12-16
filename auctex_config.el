@@ -60,13 +60,13 @@
 
   (when german (insert "\\usepackage[ngerman]{datetime}\n"))
 
-  (when (y-or-n-p "small margin?") (insert "\\usepackage[margin=2cm]{geometry}"))
+  (when (y-or-n-p "small margin?") (insert "\\usepackage[margin=2cm]{geometry}\n"))
 
-  (when (y-or-n-p "graphicx?") (insert "\\usepackage{graphicx}\n\n") (setq graphics t))
+  (when (y-or-n-p "graphicx?") (insert "\\usepackage{graphicx}\n") (setq graphics t))
 
-  (when graphics (insert "\\graphicspath{ {" (read-directory-name "Image path: ") "} }\n\n" ))
+  (when graphics (insert "\\graphicspath{ {" (read-directory-name "Image path: ") "} }\n" ))
 
-  (when (y-or-n-p "parindent 0?") (insert "\\setlength{\\parindent}{0em}\n\\setlength{\\parskip}{1em}\n\n"))
+  (when (y-or-n-p "parindent 0?") (insert "\n\\setlength{\\parindent}{0em}\n\\setlength{\\parskip}{1em}\n\n"))
   
   (when (y-or-n-p "sans serif?") (insert "\\renewcommand{\\familydefault}{\\sfdefault}\n\n"))
   
