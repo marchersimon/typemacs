@@ -40,6 +40,9 @@
 (global-visual-line-mode t)
 (show-paren-mode t)
 
+;; Start with empty scratch buffer
+(setq initial-scratch-message nil)
+
 ;; Packages
 ;;; Esup - measure startup time
 ;; (use-package esup
@@ -47,8 +50,6 @@
 
 ;;; General - More powerful keybinding functions
 (use-package general) 
-(general-define-key
- "C-M-j" 'counsel-switch-buffer)
 
 ;;; Lispy - For better elisp editing
 (use-package lispy
@@ -101,6 +102,18 @@
 (use-package doom-modeline
   :init (doom-modeline-mode 1))
 (use-package all-the-icons)
+
+;; Set keybindings
+;;; Enable <right> to autocomplete in ivy-minibuffer
+(general-define-key
+ :keymaps 'ivy-minibuffer-map
+ "<right>" 'ivy-partial-or-done)
+
+;;; Use counsel-switch-buffer as default
+(general-define-key
+ "C-M-j" 'counsel-switch-buffer)
+
+
 
 ;; Set garbage collection threshhold back to 800kB, to that gc pauses don't take too long
 (setq gc-cons-threshold 800000)
