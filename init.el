@@ -82,6 +82,12 @@
 ;;; Swiper - An Ivy-enhanced search tool
 (use-package swiper)
 
+;;; Prescient - A search filtering tool
+(use-package ivy-prescient
+  :after counsel
+  :config
+  (ivy-prescient-mode 1))
+
 ;;; Which-key - A minor-mode which displays avalable keybindings
 (use-package which-key
   :init (which-key-mode)
@@ -113,8 +119,6 @@
 (general-define-key
  "C-M-j" 'counsel-switch-buffer)
 
-
-
 ;; Set garbage collection threshhold back to 800kB, to that gc pauses don't take too long
 (setq gc-cons-threshold 800000)
 
@@ -124,7 +128,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(esup doom-modeline helpful which-key ivy-rich sublimity lispy general xah-fly-keys use-package)))
+   '(ivy-prescient smart-tabs-mode esup doom-modeline helpful which-key ivy-rich sublimity lispy general xah-fly-keys use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
