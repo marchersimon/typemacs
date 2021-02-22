@@ -2,6 +2,10 @@
 (use-package tex
   :ensure auctex)
 
+;; Add Tex Live path to "PATH"
+
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2020/bin/x86_64-linux"))
+
 ;; Prompt for macro name when typing "\"
 (setq TeX-electric-escape t)
 
