@@ -78,7 +78,7 @@
   (unless (y-or-n-p "pagenumbering?") nil (insert "\\pagenumbering{gobble}\n"))
   (when header
     (insert "\\pagestyle{fancy}\n")
-    (if (y-or-n-p "Surname first?") (insert "\\lhead{Marcher Simon}\n") (insert "\\lead{Simon Marcher}\n"))
+    (if (y-or-n-p "Surname first?") (insert "\\lhead{Marcher Simon}\n") (insert "\\lhead{Simon Marcher}\n"))
     (insert "\\chead{" (read-string "Header text: ") "}\n")
     (insert "\\rhead{\\today}\n")
     )
