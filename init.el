@@ -43,6 +43,10 @@
 ;; Start with empty scratch buffer
 (setq initial-scratch-message nil)
 
+;; Always follow symbolic links to git repositories
+
+(setq vc-follow-symlinks t)
+
 ;; Packages
 ;;; Esup - measure startup time
 ;; (use-package esup
