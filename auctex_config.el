@@ -60,6 +60,8 @@
 
   (when german (insert "\\usepackage[ngerman]{datetime}\n"))
 
+  (insert "\\usepackage[margin=2cm]{geometry\n}")
+
   (when (y-or-n-p "graphicx?") (insert "\\usepackage{graphicx}\n"))
   
   (insert "\n\\setlength{\\parindent}{0em}\n\\setlength{\\parskip}{1em}\n")
