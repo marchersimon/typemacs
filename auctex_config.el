@@ -60,7 +60,7 @@
 
   (when german (insert "\\usepackage[ngerman]{datetime}\n"))
 
-  (insert "\\usepackage[margin=2cm]{geometry\n}")
+  (insert "\\usepackage[margin=2cm, top=2.5cm]{geometry\n}")
 
   (when (y-or-n-p "graphicx?") (insert "\\usepackage{graphicx}\n"))
   
