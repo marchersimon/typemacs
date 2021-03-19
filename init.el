@@ -51,7 +51,7 @@
 ;; (use-package esup
 ;;   :config (setq esup-depth 0))
 
-;;; Org
+;;; Org mode
 (use-package org
   :config
   (setq org-hide-emphasis-markers t))
@@ -78,6 +78,8 @@
 
 (use-package visual-fill-column
   :hook (org-mode . org-mode-visual-fill))
+
+(setq org-agenda-files '("~/tasks.org"))
 
 ;;; General - More powerful keybinding functions
 (use-package general) 
