@@ -51,7 +51,7 @@
 ;; (use-package esup
 ;;   :config (setq esup-depth 0))
 
-;;; Org mode
+;;; Org
 (use-package org
   :config
   (setq org-hide-emphasis-markers t))
