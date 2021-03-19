@@ -44,13 +44,40 @@
 (setq initial-scratch-message nil)
 
 ;; Always follow symbolic links to git repositories
-
 (setq vc-follow-symlinks t)
 
 ;; Packages
 ;;; Esup - measure startup time
 ;; (use-package esup
 ;;   :config (setq esup-depth 0))
+
+;;; Org
+(use-package org
+  :config
+  (setq org-hide-emphasis-markers t))
+
+(use-package org-bullets
+  :after org
+  :hook (org-mode . org-bullets-mode)
+  :custom
+  (org-bullets-bullet-list '("❖" "◈" "◆")))
+
+(dolist (face '((org-level-1 . 1.2)
+		(org-level-2 . 1.1)
+		(org-level-3 . 1.05)))
+  (set-face-attribute (car face) nil :font "Cantarell" :height (cdr face)))
+
+(font-lock-add-keywords 'org-mode
+			'(("^ *\\([-]\\) "
+			   (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "»"))))))
+
+(defun org-mode-visual-fill ()
+  (setq visual-fill-column-width 100)
+  (setq visual-fill-column-center-text t)
+  (visual-fill-column-mode 1))
+
+(use-package visual-fill-column
+  :hook (org-mode . org-mode-visual-fill))
 
 ;;; General - More powerful keybinding functions
 (use-package general) 
@@ -132,7 +159,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(ivy-prescient smart-tabs-mode esup doom-modeline helpful which-key ivy-rich sublimity lispy general xah-fly-keys use-package)))
+   '(visual-fill-column org-bullets ivy-prescient smart-tabs-mode esup doom-modeline helpful which-key ivy-rich sublimity lispy general xah-fly-keys use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
