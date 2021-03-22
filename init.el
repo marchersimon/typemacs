@@ -31,7 +31,7 @@
 (set-cursor-color "#ffffff")
 
 ;;; Disable line numbering in certain modes
-(dolist (mode '("eshell" "org" "inferior-emacs-lisp"))
+(dolist (mode '("eshell" "org" "inferior-emacs-lisp" "org-agenda"))
   (add-hook (intern (concat mode "-mode-hook")) (lambda () (display-line-numbers-mode 0))))
 
 ;; Editing settings
