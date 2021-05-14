@@ -4,7 +4,7 @@
 
 ;; Add Tex Live path to "PATH"
 
-(setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2020/bin/x86_64-linux"))
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2021/bin/x86_64-linux"))
 
 ;; Prompt for macro name when typing "\"
 (setq TeX-electric-escape t)
@@ -60,7 +60,7 @@
 
   (when german (insert "\\usepackage[ngerman]{datetime}\n"))
 
-  (insert "\\usepackage[margin=2cm, top=2.5cm]{geometry\n}")
+  (insert "\\usepackage[margin=2cm, top=2.5cm]{geometr}\n")
 
   (when (y-or-n-p "graphicx?") (insert "\\usepackage{graphicx}\n"))
   

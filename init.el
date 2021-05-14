@@ -71,6 +71,11 @@
 			'(("^ *\\([-]\\) "
 			   (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "»"))))))
 
+(set-face-attribute 'org-date nil :foreground "#586d85")
+(set-face-attribute 'org-special-keyword nil :foreground "#586d85") ;; Deadline
+(set-face-attribute 'org-done nil :foreground "#586d85")
+(set-face-attribute 'org-todo nil :foreground "#e14c0f")
+
 (defun org-mode-visual-fill ()
   (setq visual-fill-column-width 100)
   (setq visual-fill-column-center-text t)
@@ -161,7 +166,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(visual-fill-column org-bullets ivy-prescient smart-tabs-mode esup doom-modeline helpful which-key ivy-rich sublimity lispy general xah-fly-keys use-package)))
+   '(tldr visual-fill-column org-bullets ivy-prescient smart-tabs-mode esup doom-modeline helpful which-key ivy-rich sublimity lispy general xah-fly-keys use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
