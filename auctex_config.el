@@ -33,11 +33,18 @@
 (setq TeX-source-correlate-mode t)
 (setq TeX-source-correlate-start-server t)
 
-;; Set Okular as default viewer for dvi and pdf
+;; Set Zathura as default viewer for dvi and pdf
+(add-to-list 'TeX-view-program-list
+             '("zathura"
+               ("zathura "
+                (mode-io-correlate " --synctex-forward %n:0:%b -x \"emacsclient +%{line} %{input}\" ")
+                " %o")
+               "zathura"))
+
 (setq TeX-view-program-selection '(((output-dvi has-no-display-manager) "dvi2tty")
 				   ((output-dvi style-pstricks) "dvips and gv")
-				   (output-dvi "Okular")
-				   (output-pdf "Okular")
+				   (output-dvi "zathura")
+				   (output-pdf "zathura")
 				   (output-html "xdg-open")))
 
 ;; Don't ask bevore saving a document
@@ -60,7 +67,7 @@
 
   (when german (insert "\\usepackage[ngerman]{datetime}\n"))
 
-  (insert "\\usepackage[margin=2cm, top=2.5cm]{geometr}\n")
+  (insert "\\usepackage[margin=2cm, top=2.5cm]{geometry}\n")
 
   (when (y-or-n-p "graphicx?") (insert "\\usepackage{graphicx}\n"))
   
